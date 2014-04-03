@@ -1,0 +1,23 @@
+digraph g{
+  compound=true;
+  splines=true;
+  K=2; //fdp specific
+//  rankdir="LR";
+  bgcolor="#e1e1e1";
+  node [fontname="Sawasdee", style="filled",fillcolor="white"]
+  edge [color="black", minlen="1.3", arrowsize="0.6"]
+  subgraph Human{
+  label="Human";
+  bgcolor="#f1f1f1";
+1 -> 2 -> 3 -> 4;
+}
+
+subgraph Machine{
+  label="Machine";
+  bgcolor="#f1f1f1";
+5 -> 6 -> 7 -> 8;
+}
+
+}
+
+

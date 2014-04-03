@@ -1,0 +1,96 @@
+/* 
+
+Run with this:
+dot -Tsvg demo.dot -o outfile.svg 
+
+Cool layout
+http://www.graphviz.org/content/twopi2 
+http://www.graphviz.org/Gallery/undirected/gd_1994_2007.html
+http://stackoverflow.com/questions/7374108/graphviz-node-placement-and-rankdir/7374543#7374543
+*/
+
+digraph g{
+  compound=true;
+  splines=false;
+//  ranksep=2;
+  K=2; //fdp specific
+  bgcolor="#e1e1e1";
+  node [fontname="Sawasdee", style="filled",fillcolor="white", fontsize="10"]
+  edge [color="black", minlen="1.3", arrowsize="0.6", style="tapered", penwidth="1"]
+  subgraph cluster0{
+  label="Human";
+  bgcolor="#f1f1f1";
+
+subgraph cluster0_0{
+  label="Observe";
+a
+}
+
+subgraph cluster0_1{
+  label="Orient";
+b
+}
+
+subgraph cluster0_2{
+  label="Decide";
+c
+}
+
+subgraph cluster0_3{
+  label="Act";
+d
+}
+
+{a -> b [ltail=cluster0_0 lhead=cluster0_1];
+ b -> c [ltail=cluster0_1 lhead=cluster0_2];
+ c -> d [ltail=cluster0_2 lhead=cluster0_3];}
+
+}
+
+subgraph cluster1{
+  label="Machine";
+  bgcolor="#f1f1f1"
+
+subgraph cluster1_0{
+  label="Observe";
+1
+}
+
+subgraph cluster1_1{
+  label="Orient";
+2
+}
+
+subgraph cluster1_2{
+  label="Decide";
+3
+}
+
+subgraph cluster1_3{
+  label="Act";
+4
+}
+
+{1 -> 2 [ltail=cluster1_0 lhead=cluster1_1];
+ 2 -> 3 [ltail=cluster1_1 lhead=cluster1_2];
+ 3 -> 4 [ltail=cluster1_2 lhead=cluster1_3];}
+
+}
+
+//outside
+
+{rank=same; a -> 1; 1 ->a;dir=none}
+{rank=same; b -> 2; 2 ->b;dir=none}
+{rank=same; c -> 3; 3 ->c;dir=none}
+{rank=same; d -> 4; 4 ->d;dir=none}
+
+{1->a;a->1;}
+{1->b;a->2;}
+{1->c;}
+{1->d;}
+
+{4 -> 1}
+{4 -> 2}
+{4 -> 3}
+
+}

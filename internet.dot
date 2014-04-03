@@ -1,0 +1,17 @@
+digraph
+{
+   rankdir="LR";
+   node[shape=record, height="0.4", width="0.4"];
+   edge[dir=none];
+
+   E; // E is first node to appear
+   A -> B -> C;
+   D -> E -> F;
+   G -> H -> I;
+
+   edge[constraint=false]
+   A -> D -> G;
+
+   subgraph clusterX { A; B; }
+   subgraph clusterY { E; F; H; I; }
+}

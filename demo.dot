@@ -1,0 +1,48 @@
+/* 
+
+Run with this:
+dot -Tsvg demo.dot -o outfile.svg 
+
+Cool layout
+http://www.graphviz.org/content/twopi2 
+http://www.graphviz.org/Gallery/undirected/gd_1994_2007.html
+
+*/
+
+
+digraph g{
+  compound=true;
+  splines=true;
+  K=2; //fdp specific
+  bgcolor="#e1e1e1";
+  node [fontname="Sawasdee", style="filled",fillcolor="white", fontsize="10"]
+  edge [color="black", minlen="1.3", arrowsize="0.6", style="tapered", penwidth="1"]
+//  edge [color="black", minlen="1.3", arrowsize="0.6"]
+  subgraph cluster0{
+  label="Human";
+  bgcolor="#f1f1f1";
+  adam->bill->charles->dave;
+  adam->charles->edward;
+  dave -> bill [dir=both];
+  adam -> adam;
+  adam -> edward [dir=back];
+  fred -> adam;
+  dave -> gary;
+  edward -> gary;
+  hugh ->fred;
+  adam [shape=ellipse,fillcolor="burlywood",style="filled"];
+  bill [shape=box,fillcolor="palegreen",style="filled,rounded"];
+}
+
+subgraph cluster1{
+  label="Machine";
+  bgcolor="#f1f1f1"
+ red -> blue;
+red[fillcolor="red"]
+blue[fillcolor="lightblue"]
+}
+
+/*gary -> red [ltail=cluster0,
+lhead=cluster1]; */
+
+}
